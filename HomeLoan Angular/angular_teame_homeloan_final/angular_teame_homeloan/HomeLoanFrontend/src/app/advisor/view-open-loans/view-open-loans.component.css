@@ -1,0 +1,16 @@
+.green-row {
+  /* background-color: green; */
+  background: linear-gradient(
+    to top,
+    rgba(65, 203, 70, 0.8),
+    rgb(243, 243, 243)
+  );
+}
+
+.red-row {
+  background-color: red;
+}
+
+.badge {
+  margin: 13px;
+}

@@ -1,0 +1,15 @@
+thead {
+  text-align: center;
+}
+tbody {
+  text-align: center;
+}
+.setBackLink {
+  margin-top: 30%;
+  color: white;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

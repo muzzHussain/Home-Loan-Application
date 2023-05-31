@@ -1,0 +1,62 @@
+<div
+  class="card text-center shadow-lg position-absolute top-50 start-50 translate-middle"
+  style="width: 40rem"
+>
+  <div class="card-body"  >
+    <form [formGroup]="advisorRegisterForm" (ngSubmit)="OnClickSubmit()">
+      <div class="row mt-3 mb-3 ms-3 me-3" >
+        <label for="emailId" class="col-sm-2 col-form-label" >Email Id:</label>
+        <div class="col-sm-10">
+          <input
+            type="email"
+            id="emailId"
+            name="emailId"
+            class="form-control"
+            formControlName="emailId"
+          />
+        </div>
+        
+        <span
+          class="text-danger"
+          *ngIf="emailId && emailId.touched && emailId.invalid"
+          >Email Format is Incorrect.</span
+        >
+      </div>
+      <div class="row mt-3 mb-3 ms-3 me-3">
+        <label for="password" class="col-sm-2 col-form-label">Password:</label>
+        <div class="col-sm-10">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            formControlName="password"
+          />
+        </div>
+        <span
+          class="text-danger"
+          *ngIf="password && password.touched && password.invalid"
+          >Password Minimum length should be 8 .<br>
+          It should include at-least 1 Upper Case and Lower Case Alphabet, 1 special
+          character, 1 number. </span
+        >
+      </div>
+      
+     
+      
+      
+      
+      <input
+        class="btn btn-outline-success mt-3 mb-3 ms-3 me-3"
+        type="submit"
+        value="Register"
+      />
+      <input
+      class="btn btn-outline-success mt-3 mb-3 ms-3 me-3"
+       type="reset" 
+       value="Reset"
+       />
+      
+    </form>
+  </div>
+</div>

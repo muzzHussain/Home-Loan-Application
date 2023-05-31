@@ -1,0 +1,36 @@
+.global-container {
+    height: 100%;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: center;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  form {
+    padding-top: 10px;
+    font-size: 14px;
+  
+    margin-top: 20px;
+  }
+  
+  .card-title {
+    font-weight: 300;
+  }
+  
+  .btn {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .promoTitle{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .required:after {
+    content: '*';
+    color: #EF5F5F;
+  }

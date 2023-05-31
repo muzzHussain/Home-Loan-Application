@@ -1,0 +1,198 @@
+<div class="card" style="width: 25rem; align-items: center; margin-top: 50px; margin-left: 450px;">
+  
+    <div class="card-body">
+      <h5 class="card-title" style="margin-bottom:30px;">Edit Location Details</h5>
+     
+      <form [formGroup]="editLocationForm">
+        <div class="form-group spacing ">
+          <label for="formGroupExampleInput" >Country Name:</label>
+          <input type="text" class="form-control " formControlName="countryName"  value="{{countryName}}" >
+          <small
+                  *ngIf="
+                  CountryName.touched &&
+                  CountryName.hasError(
+                      'required'
+                    )
+                  "
+                  class="text-danger fw-bold"
+                  >*Country Name is Required</small
+                >
+                <small
+                  *ngIf="
+                  CountryName.touched &&
+                  CountryName.hasError('minlength')
+                  "
+                  class="text-danger fw-bold"
+                  >*Country Name should be at least 2 characters</small
+                >
+                <small
+                  *ngIf="
+                  CountryName.touched &&
+                  CountryName.hasError('maxlength')
+                  "
+                  class="text-danger fw-bold"
+                  >*Country Name should not exceed 20 characters</small
+                >
+        </div>
+        <div class="form-group spacing ">
+          <label for="formGroupExampleInput2" >Country Code:</label>
+          <input type="text" class="form-control " formControlName="countryCode" value="{{countryCode}}" >
+          <small
+                  *ngIf="
+                  CountryCode.touched &&
+                  CountryCode.hasError(
+                      'required'
+                    )
+                  "
+                  class="text-danger fw-bold"
+                  >*Country Code  is Required</small
+                >
+                <small
+                  *ngIf="
+                  CountryCode.touched &&
+                  CountryCode.hasError('minlength')
+                  "
+                  class="text-danger fw-bold"
+                  >*Country Code should be at least 2 characters</small
+                >
+                <small
+                  *ngIf="
+                  CountryCode.touched &&
+                  CountryCode.hasError('maxlength')
+                  "
+                  class="text-danger fw-bold"
+                  >*Country Code  should not exceed 3 characters</small
+                >
+        </div>
+        <div class="form-group spacing">
+          <label for="formGroupExampleInput2">State Name:</label>
+          <input type="text" class="form-control " formControlName="stateName" value="{{stateName}}">
+          <small
+                  *ngIf="
+                  StateName.touched &&
+                  StateName.hasError(
+                      'required'
+                    )
+                  "
+                  class="text-danger fw-bold"
+                  >*State Name   is Required</small
+                >
+                <small
+                  *ngIf="
+                  StateName.touched &&
+                  StateName.hasError('minlength')
+                  "
+                  class="text-danger fw-bold"
+                  >*State Name  should be at least 2 characters</small
+                >
+                <small
+                  *ngIf="
+                  StateName.touched &&
+                  StateName.hasError('maxlength')
+                  "
+                  class="text-danger fw-bold"
+                  >*State Name   should not exceed 20 characters</small
+                >
+        </div>
+        <div class="form-group spacing">
+          <label for="formGroupExampleInput2">State Code:</label>
+          <input type="text" class="form-control " formControlName="stateCode" value="{{stateCode}}">
+          <small
+          *ngIf="
+          StateCode.touched &&
+          StateCode.hasError(
+              'required'
+            )
+          "
+          class="text-danger fw-bold"
+          >*State Code  is Required</small
+        >
+        <small
+          *ngIf="
+          StateCode.touched &&
+          StateCode.hasError('minlength')
+          "
+          class="text-danger fw-bold"
+          >*State Code should be at least 2 characters</small
+        >
+        <small
+          *ngIf="
+          StateCode.touched &&
+          StateCode.hasError('maxlength')
+          "
+          class="text-danger fw-bold"
+          >*State Code should not exceed 3 characters</small
+        >
+        </div>
+        <div class="form-group spacing">
+            <label for="formGroupExampleInput2">City Name:</label>
+            <input type="text" class="form-control " formControlName="cityName" value="{{cityName}}">
+            <small
+            *ngIf="
+            CityName.touched &&
+            CityName.hasError(
+                'required'
+              )
+            "
+            class="text-danger fw-bold"
+            >*City Name is Required</small
+          >
+          <small
+            *ngIf="
+            CityName.touched &&
+            CityName.hasError('minlength')
+            "
+            class="text-danger fw-bold"
+            >*City Name should be at least 2 characters</small
+          >
+          <small
+            *ngIf="
+            CityName.touched &&
+            CityName.hasError('maxlength')
+            "
+            class="text-danger fw-bold"
+            >*City Name should not exceed 3 characters</small
+          >
+          </div>
+          <div class="form-group spacing">
+            <label for="formGroupExampleInput2">City Code:</label>
+            <input type="text" class="form-control " formControlName="cityCode" value="{{cityCode}}">
+            <small
+            *ngIf="
+            CityCode.touched &&
+            CityCode.hasError(
+                'required'
+              )
+            "
+            class="text-danger fw-bold"
+            >*City Code is Required</small
+          >
+          <small
+            *ngIf="
+            CityCode.touched &&
+            CityCode.hasError('minlength')
+            "
+            class="text-danger fw-bold"
+            >*City Code should be at least 2 characters</small
+          >
+          <small
+            *ngIf="
+            CityCode.touched &&
+            CityCode.hasError('maxlength')
+            "
+            class="text-danger fw-bold"
+            >*City Code should not exceed 3 characters</small
+          >
+          </div>
+        <div class="buttons spacing ">
+          <button
+            type="submit"
+            class="btn btn-outline-success me-1 buttonspacing"  
+            (click)="SaveCollateralChanges()"
+          >Save Changes</button>
+          
+          <a class="btn btn-secondary" (click)="NavigateToViewLocation()">Back</a>
+        </div>
+      </form>
+    </div>
+  </div>

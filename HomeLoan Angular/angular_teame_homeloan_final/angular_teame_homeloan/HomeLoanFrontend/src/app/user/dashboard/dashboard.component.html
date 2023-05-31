@@ -1,0 +1,374 @@
+<div class="container m-3">
+  <div class="d-grid gap-4 d-flex justify-content-end">
+    <button
+      class="btn btn-outline-success me-2"
+      type="button"
+      (click)="addLoanRoute()"
+    >
+      Add Loan
+    </button>
+    <button
+      class="btn btn-outline-success me-2"
+      type="button"
+      (click)="addCollateralRoute()"
+    >
+      Add Collateral
+    </button>
+    <button
+      class="btn btn-outline-success"
+      type="button"
+      (click)="collateralListRoute()"
+    >
+      Collateral List
+    </button>
+  </div>
+  <div class="row mt-3">
+    <div class="row mt-2 text-center">
+      <h4>List of Loans</h4>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" id="mytable">
+        <thead>
+          <tr>
+            <th>S.No.</th>
+            <th>Amount</th>
+            <th>Start Date</th>
+            <th>Duration</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of loanList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ row.loanAmount | currency : "INR" }}</td>
+            <td>{{ row.loanStartDate | date }}</td>
+
+            <td>{{ row.loanDuration }} Months</td>
+
+            <td>
+              <span *ngIf="row.status === 'Created'" class="badge bg-primary">{{
+                row.status
+              }}</span>
+              <span
+                *ngIf="row.status === 'Applied'"
+                class="badge bg-secondary"
+                >{{ row.status }}</span
+              >
+              <span
+                *ngIf="row.status === 'Accepted'"
+                class="badge bg-success"
+                >{{ row.status }}</span
+              >
+              <span *ngIf="row.status === 'Rejected'" class="badge bg-danger">{{
+                row.status
+              }}</span>
+              <span
+                *ngIf="row.status === 'InProgress'"
+                class="badge bg-warning text-dark"
+                >{{ row.status }}</span
+              >
+            </td>
+            <td>
+              <div
+                class="center"
+                *ngIf="row.status === 'Created'; else viewButton"
+              >
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm me-2"
+                  (click)="editLoan(row)"
+                >
+                  Edit
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  (click)="applyLoan(row)"
+                >
+                  Apply
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop2"
+                  (click)="viewLoan(row)"
+                >
+                  View
+                </button>
+              </div>
+              <ng-template #viewButton>
+                <div class="center">
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-sm me-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop2"
+                    (click)="viewLoan(row)"
+                  >
+                    View
+                  </button>
+                </div>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Button Trigger Attach Collateral Modal -->
+
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row text-center">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Select Collateral
+          </h1>
+        </div>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body" *ngIf="!isEmptyCollateral; else emptyCollateral">
+        <table class="table table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Value</th>
+              <th>Share</th>
+              <th>Select</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let collateral of collateralData">
+              <td>{{ collateral.type }}</td>
+              <td>{{ collateral.value }}</td>
+              <td>{{ collateral.share }}</td>
+
+              <td>
+                <input
+                  type="radio"
+                  name="selectedCollateral"
+                  [(ngModel)]="selectedCollateralId"
+                  [value]="collateral.id"
+                />
+                <!-- <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [checked]="collateral.checked"
+                  [value]="collateral.id"
+                  (change)="onChangeCollateralData($event)"
+                /> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #emptyCollateral>
+        <div class="modal-body center">
+          <h4>Add Some Collateral First</h4>
+        </div>
+      </ng-template>
+      <div class="modal-footer center" *ngIf="!isEmptyCollateral">
+        <button
+          type="button"
+          (click)="submitRadio()"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button Trigge View Loan Details Modal -->
+
+<div
+  class="modal fade"
+  id="staticBackdrop2"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row text-center">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Loan Details
+          </h1>
+        </div>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="global-container">
+            <div class="card login-form">
+              <div class="card-body">
+                <div class="card-text">
+                  <form>
+                    <div class="mb-3">
+                      <label class="form-label">User Email Id</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        [value]="viewParticularLoan.emailId"
+                        disabled
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Property Address</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="viewParticularLoan.address"
+                        disabled
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">Property Size</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        [value]="viewParticularLoan.size"
+                        disabled
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Property Cost</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="viewParticularLoan.cost | currency : 'INR'"
+                        disabled
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label"
+                        >Property Registration Cost</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="
+                          viewParticularLoan.registrationCost | currency : 'INR'
+                        "
+                        disabled
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">Monthly Family Income</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="
+                          viewParticularLoan.monthlyFamilyIncome
+                            | currency : 'INR'
+                        "
+                        disabled
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">Other Income</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="
+                          viewParticularLoan.otherIncome | currency : 'INR'
+                        "
+                        disabled
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Loan Amount</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="
+                          viewParticularLoan.loanAmount | currency : 'INR'
+                        "
+                        disabled
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label"
+                        >Loan Duration (in months)</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        [value]="viewParticularLoan.loanDuration"
+                        disabled
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">Loan Start Date</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="viewParticularLoan.loanStartDate | date"
+                        disabled
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">Loan Status</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="viewParticularLoan.status"
+                        disabled
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">Notes</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [value]="viewParticularLoan.notes"
+                        disabled
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

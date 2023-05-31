@@ -1,0 +1,9 @@
+.spacing
+{
+    margin-top: 20px;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }

@@ -1,0 +1,218 @@
+<div class="container col-sm-6">
+  <div
+    *ngIf="alert"
+    [class]="alertClass + ' alert-dismissible fade show'"
+    role="alert"
+  >
+    <strong
+      >{{ alertClass.includes("success") ? "Success!" : "Oops!" }}
+    </strong>
+    {{ successMessage || errorMessage }}.
+    <button
+      (click)="closeAlert()"
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+</div>
+<h1 class="text-center">Loan Details</h1>
+<div class="container mt-3">
+  <div class="buttons">
+    <a type="button" class="btn btn-outline-secondary" (click)="back()">
+      Back
+    </a>
+    <a
+      type="button"
+      class="btn btn-success"
+      (click)="updateStatus('Accepted')"
+      [class.disabled]="disabledAccepted"
+    >
+      Accepted
+    </a>
+    <a
+      type="button"
+      class="btn btn-warning"
+      [class.disabled]="disabledRecommended"
+      (click)="updateStatus('Recommended')"
+      [class.disabled]="disabledRecommended"
+    >
+      Recommended
+    </a>
+    <a type="button" class="btn btn-danger" (click)="updateStatus('Rejected')">
+      Rejected
+    </a>
+  </div>
+  <form [formGroup]="loanDetailForm">
+    <div class="row">
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="applicationId"
+            placeholder="Field 1"
+            formControlName="id"
+          />
+          <label for="applicationId">Application Id</label>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="emailId"
+            placeholder="Field 1"
+            formControlName="emailId"
+          />
+          <label for="emailId">Email Id</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Field 1"
+            formControlName="address"
+          />
+          <label for="address">Address</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="size"
+            placeholder="Field 1"
+            formControlName="size"
+          />
+          <label for="size">Size</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="cost"
+            placeholder="Field 1"
+            formControlName="cost"
+          />
+          <label for="cost">Cost</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="regCost"
+            placeholder="Field 1"
+            formControlName="registrationCost"
+          />
+          <label for="regCost">Registration Cost</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="monthlyFamilyIncome"
+            placeholder="Field 1"
+            formControlName="monthlyFamilyIncome"
+          />
+          <label for="monthlyFamilyIncome">Monthly Family Income</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="otherIncome"
+            placeholder="Field 1"
+            formControlName="otherIncome"
+          />
+          <label for="otherIncome">Other Income</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="loanAmount"
+            placeholder="Field 1"
+            formControlName="loanAmount"
+          />
+          <label for="loanAmount">Loan Amount</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="loanDuration"
+            placeholder="Field 1"
+            formControlName="loanDuration"
+          />
+          <label for="loanDuration">Loan Duration</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="loanStartDate"
+            placeholder="Field 1"
+            formControlName="loanStartDate"
+          />
+          <label for="loanStartDate">Loan Start Date</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="status"
+            placeholder="Field 1"
+            formControlName="status"
+          />
+          <label for="status">Status</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-sm-6">
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            id="notes"
+            placeholder="Field 1"
+            formControlName="notes"
+            style="height: 90px"
+            formControlName="notes"
+          ></textarea>
+          <label for="notes">Notes</label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

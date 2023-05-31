@@ -1,0 +1,103 @@
+<div class="container col-sm-6">
+  <div class="alert alert-success" role="alert" *ngIf="successMsg">
+    {{ successMsg }}
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+    {{ errorMsg }}
+  </div>
+  <div class="global-container">
+    <div class="card collateral-form">
+      <div class="card-body">
+        <h4 class="card-title text-center fw-bold">Collateral</h4>
+        <div class="card-text">
+          <form [formGroup]="collateralForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <label class="form-label" for="type">Type:</label>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                formControlName="type"
+              >
+                <option value="" [selected]="true">Select a type</option>
+                <option value="Gold">Gold</option>
+                <option value="Property">Property</option>
+                <option value="InsurancePolicy">Insurance Policy</option>
+                <option value="Stock">Stock</option>
+              </select>
+              <small
+                *ngIf="type.touched && type.hasError('required')"
+                class="text-danger fw-bold"
+                >*Type is Required</small
+              >
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Value</label>
+
+              <input
+                type="number"
+                min="1000"
+                max="990000000"
+                class="form-control"
+                formControlName="value"
+              />
+              <small
+                *ngIf="value.touched && value.hasError('required')"
+                class="text-danger fw-bold"
+                >*Value is Required</small
+              >
+              <small
+                *ngIf="value.touched && value.hasError('min')"
+                class="text-danger fw-bold"
+                >*Value should be at least 1000</small
+              >
+              <small
+                *ngIf="value.touched && value.hasError('max')"
+                class="text-danger fw-bold"
+                >*Value should not exceed 990000000</small
+              >
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Owner Share</label>
+              <input
+                type="number"
+                min="1"
+                max="100"
+                class="form-control"
+                formControlName="share"
+              />
+              <small
+                *ngIf="share.touched && share.hasError('required')"
+                class="text-danger fw-bold"
+                >*Share is Required</small
+              >
+              <small
+                *ngIf="share.touched && share.hasError('min')"
+                class="text-danger fw-bold"
+                >*Share should be at least 1</small
+              >
+              <small
+                *ngIf="share.touched && share.hasError('max')"
+                class="text-danger fw-bold"
+                >*Share should not exceed 100</small
+              >
+            </div>
+            <div class="center">
+              <button type="button" (click)="back()" class="btn btn-outline-secondary me-2">
+                Back
+              </button>
+              <button type="submit" class="btn btn-outline-success me-2">
+                <span
+                  *ngIf="isSubmitted"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                Submit
+              </button>
+              <button type="reset" class="btn btn-outline-danger">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

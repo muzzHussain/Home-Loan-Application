@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center">
+  <div class="card m-3 ">
+    <!-- <div class="card "> -->
+      <div class="card-title ">
+        <h2>PROMOTIONS !!!</h2>
+      </div>
+      <div class="card-body">
+        <img src="assets/promotionImage.png" class="center"alt="promotions"  />
+        <p class="card-text fs-4" style="text-align: center">
+          {{ promotion.message }}
+        </p>        
+        <h4 class="card-text" style="text-align: center">
+          Offer ending on {{ promotion.endDate | date:'dd-MM-yyyy' }}
+        </h4>
+      </div>
+    <!-- </div> -->
+  </div>
+</div>

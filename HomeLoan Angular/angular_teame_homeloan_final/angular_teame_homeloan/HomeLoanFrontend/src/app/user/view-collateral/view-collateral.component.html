@@ -1,0 +1,54 @@
+<button type="button" (click)="back()" class="btn btn-outline-secondary me-2">
+  Back
+</button>
+<h1 class="text-center">List of Collaterals</h1>
+<div class="container">
+  
+   
+  <mat-form-field appearance="fill">
+    <mat-label>Search Collateral</mat-label>
+    <input (keyup)="applyFilter($any($event.target).value)" matInput >
+    <mat-icon matPrefix fontIcon="Search"></mat-icon>
+  </mat-form-field>
+
+ 
+    <table class="table table-striped mat-elevation-z8  " mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Collateral ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+       <!-- TypeColumn -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+      <!-- Value column-->
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef> Value</th>
+        <td mat-cell *matCellDef="let element"> {{element.value }} </td>
+      </ng-container>
+      <!--Share column -->
+      <ng-container matColumnDef="share">
+        <th mat-header-cell *matHeaderCellDef>Share</th>
+        <td mat-cell *matCellDef="let element"> {{element.share}} </td>
+      </ng-container>
+     
+      <!-- Edit and Delete button -->
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef>View</th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn btn-info " (click)="editdetails(element.id,element.type,element.value,element.share)">Edit</button>
+          <button class="btn btn-info buttonspace" (click)="deletecollateral(element.id)">Delete</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+  

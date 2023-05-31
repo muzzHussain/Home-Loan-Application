@@ -1,0 +1,90 @@
+<div class="global-container">
+  <div class="card login-form w-50">
+    <div class="card-body">
+      <h3 class="card-title text-center promoTitle">ADD PROMOTION</h3>
+      <div class="card-text">
+        <form [formGroup]="AddPromotion" (ngSubmit)="AddingPromotion()">
+          <div class="mb-3">
+            <label class="form-label fw-bold required" for="inputEmail"
+              >Start Date</label
+            >
+            <input
+              type="date"
+              formControlName="startDate"
+              class="form-control"
+              placeholder="Date"
+              min="{{ minDate }}"
+            />
+            <span
+              class="text-danger"
+              *ngIf="StartDate?.touched && StartDate?.invalid"
+              >Invalid Date</span
+            >
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold required" for="inputEmail"
+              >End Date</label
+            >
+            <input
+              type="date"
+              formControlName="endDate"
+              class="form-control"
+              placeholder="Date"
+              min="{{ nextDate }}"
+            />
+            <span
+              class="text-danger"
+              *ngIf="endDate?.touched && endDate?.invalid"
+              >Invalid Date</span
+            >
+          </div>
+
+          <div class="row">
+            <div class="mb-4 w-50 row">
+              <label class="form-label col-6 fw-bold required"
+                >Promotion Type</label
+              >
+              <select class="select col-6" formControlName="type">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+              <span
+                class="text-danger"
+                *ngIf="PromotionType?.touched && PromotionType?.invalid"
+                >Promotion Type is Must</span
+              >
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold required">Message</label>
+            <input type="text" class="form-control" formControlName="message" />
+            <span
+              class="text-danger"
+              *ngIf="message?.touched && message?.invalid"
+              >Message is required
+            </span>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary mx-2"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              [disabled]="AddPromotion.invalid"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

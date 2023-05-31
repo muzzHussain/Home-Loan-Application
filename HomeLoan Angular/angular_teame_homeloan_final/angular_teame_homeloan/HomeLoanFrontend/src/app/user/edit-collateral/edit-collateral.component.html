@@ -1,0 +1,86 @@
+<div class="card" style="width: 18rem; align-items: center; margin-top: 50px; margin-left: 450px;">
+  
+  <div class="card-body">
+    <h5 class="card-title" style="margin-bottom:30px;">Edit Collateral Details</h5>
+   
+    <form [formGroup]="editCollateralForm">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Id:</label>
+        <input type="text" class="form-control"  value="{{id}}" disabled>
+      </div>
+      <div class="form-group spacing">
+        <label for="formGroupExampleInput2">Type:</label>
+        <input type="text" class="form-control"  value="{{type}}" disabled>
+      </div>
+      <div class="form-group spacing">
+        <label for="formGroupExampleInput2">Value:</label>
+        <input type="text" class="form-control" formControlName="value" value="{{value}}">
+        <small
+                  *ngIf="
+                  Value.touched &&
+                  Value.hasError(
+                      'required'
+                    )
+                  "
+                  class="text-danger fw-bold"
+                  >*Value is Required</small
+                >
+                <small
+                  *ngIf="
+                  Value.touched &&
+                  Value.hasError('min')
+                  "
+                  class="text-danger fw-bold"
+                  >*Value should be at least 1,000</small
+                >
+                <small
+                  *ngIf="
+                  Value.touched &&
+                  Value.hasError('max')
+                  "
+                  class="text-danger fw-bold"
+                  >*Value should not exceed 99,00,00,000</small
+                >
+      </div>
+      <div class="form-group spacing">
+        <label for="formGroupExampleInput2">Share:</label>
+        <input type="text" class="form-control" formControlName="share" value="{{share}}">
+        <small
+                  *ngIf="
+                  Share.touched &&
+                  Share.hasError(
+                      'required'
+                    )
+                  "
+                  class="text-danger fw-bold"
+                  >*Share is Required</small
+                >
+                <small
+                  *ngIf="
+                  Share.touched &&
+                  Share.hasError('min')
+                  "
+                  class="text-danger fw-bold"
+                  >*Share should be at least 1</small
+                >
+                <small
+                  *ngIf="
+                  Share.touched &&
+                  Share.hasError('max')
+                  "
+                  class="text-danger fw-bold"
+                  >*Share should not exceed 100</small
+                >
+      </div>
+      <div class="buttons spacing">
+        <button
+          type="submit"
+          class="btn btn-outline-success me-1"  
+          (click)="SaveCollateralChanges()"
+        >Save Changes</button>
+        
+        <a class="btn btn-secondary" (click)="NavigateToViewCollateral()">Back</a>
+      </div>
+    </form>
+  </div>
+</div>

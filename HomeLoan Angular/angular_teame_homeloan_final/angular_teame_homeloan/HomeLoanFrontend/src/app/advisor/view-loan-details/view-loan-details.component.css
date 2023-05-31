@@ -1,0 +1,78 @@
+/* .alert {
+  /* margin-top: 35px; */
+/* position: relative; */
+/* width: 46%; 
+} */
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+form {
+  padding-top: 10px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.card-title {
+  font-weight: 300;
+}
+
+/* .btn {
+  font-size: 14px;
+  margin-top: 20px;
+} */
+
+.login-form {
+  width: 330px;
+  /* margin: 20px; */
+}
+
+.sign-up {
+  text-align: center;
+  padding: 20px 0 0;
+}
+
+.forms {
+  width: 700px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  padding-top: 1.5rem;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 1rem;
+  opacity: 0.5;
+  transition: all 0.2s ease-out;
+}
+
+.form-control:focus ~ .form-label,
+.form-control:not(:placeholder-shown) ~ .form-label {
+  margin-top: 0;
+  font-size: 0.8rem;
+  opacity: 1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}

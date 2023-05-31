@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="buttons">
+      <a
+        class="btn btn-outline-success"
+        [ngClass]="{ active: activeButton === 'Add Promotions' }"
+        (click)="setActiveButton('Add Promotions')"
+        routerLink="/advisor/dashboard/add-promotion"
+        >Add Promotions</a
+      >
+      <!-- <a
+        class="btn btn-outline-secondary"
+        [ngClass]="{ active: activeButton === 'View Promotions' }"
+        (click)="setActiveButton('View Promotions')"
+        
+        >View Promotions</a
+      > -->
+      <a
+        class="btn btn-outline-secondary"
+        [ngClass]="{ active: activeButton === 'View All Loans' }"
+        (click)="setActiveButton('View All Loans')"
+        routerLink="/advisor/dashboard/view-all-open-loan"
+        >View All Loans</a
+      >
+      <a
+        class="btn btn-outline-info"
+        [ngClass]="{ active: activeButton === 'Locations' }"
+        (click)="setActiveButton('Locations')"
+        routerLink="/advisor/dashboard/view-location"
+        
+        >Locations</a
+      >
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

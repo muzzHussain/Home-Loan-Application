@@ -1,0 +1,79 @@
+<!-- <nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Home Loan System</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#hls"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="hls">
+      <ul class="navbar-nav">
+        <li *ngIf="!isAuthenticated" class="nav-item me-2">
+          <a
+            class="btn btn-outline-primary"
+            aria-current="page"
+            routerLink="/users/register"
+            >Register</a
+          >
+        </li>
+        <li *ngIf="!isAuthenticated" class="nav-item">
+          <a class="btn btn-outline-primary" routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item me-2">
+          <a class="btn btn-outline-primary" (click)="onLogout()">Logout</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item">
+          <a class="btn btn-outline-primary" routerLink="/updatePassword"
+            >Update</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Home Loan System</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#hls"
+      aria-controls="hls"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="hls">
+      <ul class="navbar-nav ms-auto">
+        <li *ngIf="!isAuthenticated" class="nav-item me-2">
+          <a
+            class="btn btn-outline-primary"
+            aria-current="page"
+            routerLink="/users/register"
+            >Register</a
+          >
+        </li>
+        <li *ngIf="!isAuthenticated" class="nav-item">
+          <a class="btn btn-outline-primary" routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item me-2">
+          <a class="btn btn-outline-primary" (click)="onLogout()">Logout</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item">
+          <a class="btn btn-outline-primary" routerLink="/updatePassword"
+            >Update</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
